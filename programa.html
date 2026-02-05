@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Académico | Psicomotricidad - Instituto Superior Jerárquicos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: {
+                        brandViolet: '#6D28D9',
+                        brandBlue: '#3F51B5',
+                        brandBg: '#F8FAFC',
+                    },
+                    borderRadius: { 'brand': '30px' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .table-gradient-header {
+            background: linear-gradient(90deg, #6D28D9 0%, #3F51B5 100%);
+        }
+        .bg-mesh {
+            background-color: #3F51B5;
+            background-image: radial-gradient(at 0% 0%, hsla(262,76%,50%,1) 0, transparent 50%), 
+                              radial-gradient(at 100% 100%, hsla(231,48%,48%,1) 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-brandBg text-slate-800 antialiased font-sans">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <img src="https://jerarquicos.com/wp-content/uploads/2024/01/jerarquicos-logo.svg" alt="Jerárquicos" class="h-7 md:h-9">
+            <img src="https://i.ibb.co/MD3KhQHt/Instituto-logo-1.png" alt="Instituto" class="h-12 md:h-16">
+        </div>
+    </nav>
+
+    <section class="relative pt-40 pb-20 bg-mesh text-white rounded-b-[50px] md:rounded-b-[80px] shadow-xl overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight uppercase">
+                Programa académico de <br>
+                <span class="text-white/80 font-light">Tecnicatura Superior en Psicomotricidad</span>
+            </h1>
+            <div class="h-2 w-24 bg-white/30 mx-auto rounded-full"></div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 max-w-7xl mx-auto -mt-10 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-brand shadow-lg border-t-4 border-brandViolet">
+                <div class="flex items-center gap-4 mb-4 text-brandViolet">
+                    <i data-lucide="target" class="w-8 h-8"></i>
+                    <h2 class="text-xl font-extrabold uppercase tracking-tight">Objetivo de la carrera</h2>
+                </div>
+                <p class="text-slate-600 leading-relaxed font-medium text-sm">Formar profesionales capacitados para intervenir de manera preventiva y educativa sobre el desarrollo psicomotor, la organización psicomotriz y la integración somato-psíquica de la persona en sus diferentes etapas evolutivas, desde un abordaje interdisciplinario en los ámbitos de la Educación, Salud y Socio-Comunitario.</p>
+            </div>
+            <div class="bg-white p-8 rounded-brand shadow-lg border-t-4 border-brandBlue">
+                <div class="flex items-center gap-4 mb-4 text-brandBlue">
+                    <i data-lucide="user-check" class="w-8 h-8"></i>
+                    <h2 class="text-xl font-extrabold uppercase tracking-tight">Perfil profesional</h2>
+                </div>
+                <p class="text-slate-600 leading-relaxed font-medium text-sm">El egresado podrá desempeñarse en hospitales, clínicas, programas comunitarios e instituciones educativas. Está facultado para el ejercicio profesional tanto en relación de dependencia como en el desempeño autogestionario y autónomo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 max-w-7xl mx-auto">
+        
+        <div class="mb-16">
+            <h3 class="text-2xl font-black text-brandViolet mb-6 flex items-center gap-3">
+                <span class="bg-brandViolet text-white w-10 h-10 rounded-xl flex items-center justify-center text-sm">01</span>
+                PRIMER AÑO
+            </h3>
+            <div class="overflow-hidden rounded-2xl shadow-xl bg-white border border-slate-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="table-gradient-header text-white">
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest">Nombre de la Materia</th>
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest text-center">Cursado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr> <td class="p-5 font-bold text-slate-700">Comunicación</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">1° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Unidad de Definición Institucional I</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">2° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicología</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Biología Humana</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Salud Pública</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicología del Desarrollo I</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicomotricidad I</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Desarrollo Psicomotor</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr class="bg-brandViolet/5"> <td class="p-5 font-black text-brandViolet italic">Cuerpo y Movimiento</td> <td class="p-5 text-center text-brandViolet font-black italic">Anual</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h3 class="text-2xl font-black text-brandViolet mb-6 flex items-center gap-3">
+                <span class="bg-brandViolet text-white w-10 h-10 rounded-xl flex items-center justify-center text-sm">02</span>
+                SEGUNDO AÑO
+            </h3>
+            <div class="overflow-hidden rounded-2xl shadow-xl bg-white border border-slate-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="table-gradient-header text-white">
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest">Nombre de la Materia</th>
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest text-center">Cursado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr> <td class="p-5 font-bold text-slate-700">Problemáticas Socio Contemporáneas</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">1° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Unidad de Definición Institucional II</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">2° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Organización y Gestión de las Instituciones</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">1° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Bioseguridad y Medio Ambiente en el Trabajo</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">2° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicología del Desarrollo II</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Evaluación Psicomotriz</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicomotricidad II</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Neuropatología</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Cuerpo y Expresividad</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr class="bg-brandViolet/5"> <td class="p-5 font-black text-brandViolet italic">Práctica Profesionalizante I</td> <td class="p-5 text-center text-brandViolet font-black italic">Anual</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h3 class="text-2xl font-black text-brandViolet mb-6 flex items-center gap-3">
+                <span class="bg-brandViolet text-white w-10 h-10 rounded-xl flex items-center justify-center text-sm">03</span>
+                TERCER AÑO
+            </h3>
+            <div class="overflow-hidden rounded-2xl shadow-xl bg-white border border-slate-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="table-gradient-header text-white">
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest">Nombre de la Materia</th>
+                            <th class="p-5 font-bold uppercase text-xs tracking-widest text-center">Cursado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr> <td class="p-5 font-bold text-slate-700">Ética y Responsabilidad Social</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">1° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Derecho y Legislación Laboral</td> <td class="p-5 text-center text-slate-500 text-sm font-semibold">2° Cuatrimestre</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Innovación y Desarrollo Emprendedor</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicopatología</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicomotricidad III</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Cuerpo y Simbolización</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr> <td class="p-5 font-bold text-slate-700">Psicología Social e Institucional</td> <td class="p-5 text-center text-slate-500 text-sm italic">Anual</td> </tr>
+                        <tr class="bg-brandViolet/5"> <td class="p-5 font-black text-brandViolet italic">Práctica Profesionalizante II</td> <td class="p-5 text-center text-brandViolet font-black italic">Anual</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-brandBg border-2 border-brandViolet rounded-[40px] p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-6 -right-6 text-brandViolet/10">
+                    <i data-lucide="clock" size="120"></i>
+                </div>
+                
+                <h2 class="text-3xl md:text-4xl font-black text-brandBlue uppercase mb-8 tracking-tight">Horarios de Cursado</h2>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                    <div class="flex flex-col items-center">
+                        <span class="text-brandViolet font-bold uppercase tracking-widest text-xs mb-2">Días</span>
+                        <p class="text-2xl font-extrabold text-slate-700">Lunes a viernes</p>
+                    </div>
+                    <div class="hidden md:block w-px h-16 bg-slate-300"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-brandViolet font-bold uppercase tracking-widest text-xs mb-2">Franja Horaria</span>
+                        <p class="text-2xl font-extrabold text-slate-700">17:30 hs. a 22 hs.</p>
+                    </div>
+                </div>
+                
+                <p class="mt-10 text-slate-500 text-sm font-medium italic">
+                    * El cursado combina instancias presenciales y virtuales (Modalidad Híbrida).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-slate-400 text-[10px] uppercase tracking-[0.3em] font-bold border-t border-slate-100 bg-white">
+        © 2026 Instituto Jerárquicos Santa Fe | Psicomotricidad
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
