@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psicomotricidad | Instituto Superior Jerárquicos</title>
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '840329912392416');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=840329912392416&ev=PageView&noscript=1"
+    /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -137,7 +153,7 @@
                 </div>
                 <div class="space-y-4">
                     <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto border border-white/20"><i data-lucide="monitor" class="float-icon"></i></div>
-                    <p class="text-xs font-bold uppercase">Cursado Flexible (Mixto)</p>
+                    <p class="text-xs font-bold uppercase">Cursado híbrido</p>
                 </div>
                 <div class="space-y-4">
                     <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto border border-white/20"><i data-lucide="calendar" class="float-icon"></i></div>
@@ -155,7 +171,7 @@
         <div class="max-w-4xl mx-auto text-center">
             <div class="bg-white p-10 rounded-[40px] shadow-xl border-t-8 border-brandViolet mb-12">
                 <h3 class="text-2xl md:text-4xl font-black text-brandBlue uppercase mb-8">Horarios que encajan con vos</h3>
-                <p class="text-brandViolet font-bold text-xl mb-10">Lunes a viernes de 17:30 hs. a 22 hs.</p>
+                <p class="text-brandViolet font-bold text-xl mb-10">Lunes a viernes de 17:40 hs. a 22 hs.</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <button onclick="togglePopup(true)" class="bg-brandViolet text-white font-extrabold py-4 px-8 rounded-full shadow-lg uppercase text-sm">Descargar programa</button>
                     <button onclick="scrollToId('contacto')" class="bg-transparent border-2 border-brandViolet text-brandViolet font-extrabold py-4 px-8 rounded-full hover:bg-brandViolet hover:text-white transition-all uppercase text-sm">Quiero hablar con un asesor</button>
@@ -209,7 +225,10 @@
             <button onclick="togglePopup(false)" class="absolute top-6 right-6 text-white/50"><i data-lucide="x-circle"></i></button>
             <h3 class="text-2xl font-extrabold uppercase text-center mb-6">Descargar Programa</h3>
             <form onsubmit="handleSubmit(event, '59e4565b-af0d-476c-a532-7fef106dcabb', 'Descarga Programa')" class="space-y-4">
-                <input type="text" name="full_name" placeholder="Nombre completo" class="w-full p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" name="first_name" placeholder="Nombre" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
+                    <input type="text" name="last_name" placeholder="Apellido" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
+                </div>
                 <input type="email" name="email" placeholder="Correo" class="w-full p-4 rounded-2xl bg-white/10 border border-white/20 text-white" required>
                 <input type="tel" name="phone" placeholder="Celular" class="w-full p-4 rounded-2xl bg-white/10 border border-white/20 text-white" required>
                 
@@ -272,19 +291,22 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        firstName: form.first_name?.value || form.full_name?.value.split(' ')[0],
-                        lastName: form.last_name?.value || form.full_name?.value.split(' ')[1] || '',
+                        firstName: form.first_name.value,
+                        lastName: form.last_name.value,
                         email: form.email.value,
                         phone: phoneFinal,
                         interest: 'Tecnicatura Superior en Psicomotricidad'
                     })
                 });
-                alert('¡Datos recibidos! Nos contactaremos pronto.');
-                form.reset();
-                updateCaptchas();
-                if (type === 'Descarga Programa') togglePopup(false);
-            } catch (err) { alert('Error al enviar.'); }
-            finally { btn.innerText = originalText; btn.disabled = false; }
+                
+                // Redirección después del envío exitoso
+                window.location.href = "https://psicomotricidad.carrerasjerarquicos.com/programa";
+                
+            } catch (err) { 
+                alert('Error al enviar.'); 
+                btn.innerText = originalText; 
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
