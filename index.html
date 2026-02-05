@@ -52,11 +52,6 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .glass-card-dark {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -202,7 +197,7 @@
             <div id="contacto" class="bg-brandBlue rounded-[40px] p-10 text-white shadow-2xl">
                 <h3 class="text-3xl font-extrabold mb-4 uppercase">Completá tus datos</h3>
                 <p class="text-white mb-8 italic text-sm">✨ Un asesor te contactará por WhatsApp en menos de 5 minutos.</p>
-                <form onsubmit="handleSubmit(event, '89cb19c6-4c45-4b87-898a-49cc5280f72d', 'Consulta General')" class="space-y-4">
+                <form onsubmit="handleSubmit(event, 'c2ab65ca-1eb3-4e61-8553-cf7d790ffd99', 'Consulta General')" class="space-y-4">
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" name="first_name" placeholder="Nombre" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
                         <input type="text" name="last_name" placeholder="Apellido" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
@@ -224,7 +219,7 @@
         <div class="bg-brandBlue p-8 rounded-[40px] max-w-xl w-full relative text-white">
             <button onclick="togglePopup(false)" class="absolute top-6 right-6 text-white/50"><i data-lucide="x-circle"></i></button>
             <h3 class="text-2xl font-extrabold uppercase text-center mb-6">Descargar Programa</h3>
-            <form onsubmit="handleSubmit(event, '59e4565b-af0d-476c-a532-7fef106dcabb', 'Descarga Programa')" class="space-y-4">
+            <form onsubmit="handleSubmit(event, 'c2ab65ca-1eb3-4e61-8553-cf7d790ffd99', 'Descarga Programa')" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <input type="text" name="first_name" placeholder="Nombre" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
                     <input type="text" name="last_name" placeholder="Apellido" class="p-4 rounded-2xl bg-white/10 border border-white/20 text-white outline-none" required>
@@ -295,11 +290,11 @@
                         lastName: form.last_name.value,
                         email: form.email.value,
                         phone: phoneFinal,
-                        interest: 'Tecnicatura Superior en Psicomotricidad'
+                        interest: 'Tecnicatura Superior en Psicomotricidad',
+                        formType: type
                     })
                 });
                 
-                // Redirección corregida con la extensión .html para evitar el error 404
                 window.location.href = "https://psicomotricidad.carrerasjerarquicos.com/programa.html";
                 
             } catch (err) { 
