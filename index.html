@@ -43,7 +43,7 @@
         html { scroll-behavior: smooth; }
         .hero-overlay {
             background-image: linear-gradient(to right, rgba(61, 40, 217, 0.9) 0%, rgba(61, 40, 217, 0.5) 50%, rgba(0, 0, 0, 0.3) 100%), 
-                              url('https://images.pexels.com/photos/4587355/pexels-photo-4587355.jpeg');
+                            url('https://images.pexels.com/photos/4587355/pexels-photo-4587355.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -240,6 +240,17 @@
 
     <script>
         lucide.createIcons();
+
+        // ----------------------------------------------------
+        // HELPER PARA OBTENER COOKIES DE META (NECESARIO PARA CAPI)
+        // ----------------------------------------------------
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        // Captcha Logic
         let currentCaptchaResult = 0;
         function updateCaptchas() {
             const a = Math.floor(Math.random() * 9) + 1;
@@ -249,6 +260,7 @@
         }
         updateCaptchas();
 
+        // Video Logic
         const player = new Vimeo.Player(document.querySelector('#video-egresados'));
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -260,45 +272,90 @@
         observer.observe(document.querySelector('.video-container'));
 
         function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 100, behavior: 'smooth' }); }
+        
         function togglePopup(show) { 
             document.getElementById('popup').classList.toggle('hidden', !show);
             document.body.style.overflow = show ? 'hidden' : 'auto';
         }
 
+        // ----------------------------------------------------
+        // LOGICA DE ENVÍO OPTIMIZADA PARA CONVERSIONES CAPI + PIXEL
+        // ----------------------------------------------------
         async function handleSubmit(e, triggerId, type) {
             e.preventDefault();
             const form = e.target;
-            if (parseInt(form.captcha.value) !== currentCaptchaResult) {
-                alert('Captcha incorrecto.');
+            const captchaInput = form.querySelector('[name="captcha"]');
+
+            if (parseInt(captchaInput.value) !== currentCaptchaResult) {
+                alert('Captcha incorrecto. Intentá de nuevo.');
                 updateCaptchas();
+                captchaInput.value = '';
                 return;
             }
+            
             const btn = form.querySelector('button');
             const originalText = btn.innerText;
-            btn.innerText = 'PROCESANDO...';
-            btn.disabled = true;
+            
+            // Limpieza de teléfono
+            let phoneRaw = form.querySelector('[name="phone"]').value;
+            let phoneClean = phoneRaw.replace(/\D/g, ''); 
+            if (phoneClean !== '' && !phoneClean.startsWith('54')) phoneClean = '54' + phoneClean;
 
-            const phone = form.phone.value.replace(/\D/g, '');
-            const phoneFinal = phone.startsWith('54') ? phone : '54' + phone;
+            // GENERACIÓN DE ID ÚNICO Y RECUPERACIÓN DE COOKIES
+            const eventId = 'lead_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+            const fbp = getCookie('_fbp');
+            const fbc = getCookie('_fbc');
+
+            const webhookUrl = `https://services.leadconnectorhq.com/hooks/h9UGYG3IwsHJd47SoPsD/webhook-trigger/${triggerId}`;
+
+            const data = {
+                firstName: form.querySelector('[name="first_name"]').value,
+                lastName: form.querySelector('[name="last_name"]').value,
+                email: form.querySelector('[name="email"]').value,
+                phone: phoneClean,
+                interest: 'Tecnicatura Superior en Psicomotricidad',
+                formType: type,
+                // DATOS TÉCNICOS AGREGADOS PARA META CAPI
+                eventId: eventId,
+                fbp: fbp,
+                fbc: fbc,
+                userAgent: navigator.userAgent,
+                eventSourceUrl: window.location.href
+            };
 
             try {
-                await fetch(`https://services.leadconnectorhq.com/hooks/h9UGYG3IwsHJd47SoPsD/webhook-trigger/${triggerId}`, {
+                btn.innerText = 'PROCESANDO...';
+                btn.disabled = true;
+
+                // 1. Envío al Webhook de GHL (Backend CAPI)
+                const response = await fetch(webhookUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        firstName: form.first_name.value,
-                        lastName: form.last_name.value,
-                        email: form.email.value,
-                        phone: phoneFinal,
-                        interest: 'Tecnicatura Superior en Psicomotricidad',
-                        formType: type
-                    })
+                    body: JSON.stringify(data)
                 });
+
+                // VERIFICACION CRITICA
+                if (!response.ok) {
+                    throw new Error('Error en el envío al servidor');
+                }
+
+                // 2. Disparo del Píxel (Frontend) con DEDUPLICACIÓN
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: 'Inscripción Psicomotricidad 2026',
+                        content_category: 'Educación Superior'
+                    }, { eventID: eventId }); 
+                }
                 
+                // Confirmación Visual
+                alert('¡Excelente! Recibimos tus datos. Ahora te redirigimos al programa académico.');
+
+                // Redirección Absoluta
                 window.location.href = "https://psicomotricidad.carrerasjerarquicos.com/programa.html";
                 
             } catch (err) { 
-                alert('Error al enviar.'); 
+                console.error(err);
+                alert('Hubo un error al enviar. Por favor, revisá tu conexión e intentá de nuevo.'); 
                 btn.innerText = originalText; 
                 btn.disabled = false;
             }
